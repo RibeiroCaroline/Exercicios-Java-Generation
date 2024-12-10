@@ -13,41 +13,39 @@ public class ExercicioStack {
 		String livro;
 
 		do {
-
+			Iterator<String> listarLivros = pilha.iterator();
 			System.out.println("***************** M E N U ********************");
 			System.out.println("\n1 - Adicionar Livro na pilha");
 			System.out.println("2 - Listar todos os Livros");
 			System.out.println("3 - Retirar Livro da pilha");
 			System.out.println("0 - Sair");
-			System.out.println("\n*************************************+++****");
+			System.out.println("\n*****************************************3****");
 			System.out.println("Entre com a opção desejada: ");
 
 			opcao = leia.nextInt();
 
 			switch (opcao) {
 			case 1:
-				do {
 					System.out.println("Digite o nome: ");
 					leia.skip("\\R?");
 					livro = leia.nextLine();
 					pilha.push(livro);
 					System.out.println("\nPilha: ");
 
-					Iterator<String> listarLivros = pilha.iterator();
+					Iterator<String> listarLivrosAtualizados = pilha.iterator();
 
-					while (listarLivros.hasNext()) {
-						System.out.println(listarLivros.next());
+					while (listarLivrosAtualizados.hasNext()) {
+						System.out.println(listarLivrosAtualizados.next());
 					}
 					
 					System.out.println("\nLivro adicionado!");
-				} while (opcao != 1);
 				break;
 			case 2:
 				if (pilha.isEmpty()) {
 					System.out.println("\nA Pilha está vazia!");
 				} else {
 					System.out.println("\nLista de Livros na Pilha: ");
-					Iterator<String> listarLivros = pilha.iterator();
+					
 
 					while (listarLivros.hasNext()) {
 						System.out.println(listarLivros.next());
@@ -59,10 +57,11 @@ public class ExercicioStack {
 					System.out.println("\nA Pilha está vazia!");
 				} else {
 					pilha.pop();
-					Iterator<String> listarLivros = pilha.iterator();
-
-					while (listarLivros.hasNext()) {
-						System.out.println(listarLivros.next());
+					
+					Iterator<String> listarLivrosAposExcluir = pilha.iterator();
+					
+					while (listarLivrosAposExcluir.hasNext()) {
+						System.out.println(listarLivrosAposExcluir.next());
 					}
 					System.out.println("\nUm livro foi retirado da pilha!");
 				}

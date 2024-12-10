@@ -11,9 +11,12 @@ public class ExercicioQueue {
 		int opcao = 0;
 		Scanner leia = new Scanner(System.in);
 		String cliente;
+		
+		
 
 		do {
-
+			Iterator<String> listarClientes = fila.iterator();
+			
 			System.out.println("***************** M E N U ********************");
 			System.out.println("\n1 - Adicionar Cliente na Fila");
 			System.out.println("2 - Listar todos os Clientes");
@@ -25,46 +28,47 @@ public class ExercicioQueue {
 			opcao = leia.nextInt();
 
 			switch (opcao) {
-			case 1:
-				do {
-					System.out.println("Digite o nome: ");
-					cliente = leia.next();
-					fila.add(cliente);
-					System.out.println("\nFila: ");
+				case 1:
+					
+						System.out.println("Digite o nome: ");
+						cliente = leia.next();
+						fila.add(cliente);
+						System.out.println("\nFila: ");
+	
+						Iterator<String> listarClientesAtualizados = fila.iterator();
+	
+						while (listarClientesAtualizados.hasNext()) {
+							System.out.println(listarClientesAtualizados.next());
+						}
+	
+						System.out.println("\nCliente adicionado!");
 
-					Iterator<String> listarClientes = fila.iterator();
-
-					while (listarClientes.hasNext()) {
-						System.out.println(listarClientes.next());
+					break;
+				case 2:
+					if (fila.isEmpty()) {
+						System.out.println("\nA Fila está vazia!");
+					} else {
+						System.out.println("\nLista de Clientes na Fila: ");
+						
+	
+						while (listarClientes.hasNext()) {
+							System.out.println(listarClientes.next());
+						}
 					}
-
-					System.out.println("\nCliente adicionado!");
-				} while (opcao != 1);
-				break;
-			case 2:
-				if (fila.isEmpty()) {
-					System.out.println("\nA Fila está vazia!");
-				} else {
-					System.out.println("\nLista de Clientes na Fila: ");
-					Iterator<String> listarClientes = fila.iterator();
-
-					while (listarClientes.hasNext()) {
-						System.out.println(listarClientes.next());
+					break;
+				case 3:
+					if (fila.isEmpty()) {
+						System.out.println("\nA Fila está vazia!");
+					} else {
+						fila.remove();
+	
+						Iterator<String> listarClientesAposExcluir = fila.iterator();
+						
+						while (listarClientesAposExcluir.hasNext()) {
+							System.out.println(listarClientesAposExcluir.next());
+						}
+						System.out.println("\nO Cliente foi Chamado!");
 					}
-				}
-				break;
-			case 3:
-				if (fila.isEmpty()) {
-					System.out.println("\nA Fila está vazia!");
-				} else {
-					fila.remove();
-					Iterator<String> listarClientes = fila.iterator();
-
-					while (listarClientes.hasNext()) {
-						System.out.println(listarClientes.next());
-					}
-					System.out.println("\nO Cliente foi Chamado!");
-				}
 
 			}
 
